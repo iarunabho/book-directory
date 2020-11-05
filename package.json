@@ -1,0 +1,25 @@
+{
+  "name": "book-directory",
+  "version": "1.0.0",
+  "description": "Simple Rest API on book directory",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iarunabho/book-directory.git"
+  },
+  "author": "God",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iarunabho/book-directory/issues"
+  },
+  "homepage": "https://github.com/iarunabho/book-directory#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.6"
+  }
+}
