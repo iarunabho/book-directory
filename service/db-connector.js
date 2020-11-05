@@ -1,21 +1,18 @@
 var mysql = require('mysql')
+
 var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'sqlsql',
-  port: 3306
+  host: "localhost",
+  user: "root",
+  password: "password",
+  insecureAuth : true,
+  database: 'book'
 });
 
 const createTable = () => {
     connection.connect(function(err) {
        
         console.log("Connected!");
-        var sqlDb = "CREATE DATABASE book";
-        connection.query(sqlDb, function (err, result) {
-        
-            console.log("Database created");
-          });
-        var sql = "CREATE TABLE IF NOT EXISTS bookdets (name VARCHAR(255), count Integer)";
+        var sql = "CREATE TABLE IF NOT EXISTS bookdets(name VARCHAR(255), count Integer)";
         connection.query(sql, function (err, result) {
         
           console.log("Table created");
@@ -23,7 +20,6 @@ const createTable = () => {
       });
 }
 const createConnection = () => {
-    connection.connect();
     return connection;
 }
 
