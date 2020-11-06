@@ -26,6 +26,7 @@ app.post('/', function (req, res) {
     res.send("Record Added Successfully");
 })
 
+//Added body parser to parse json
 app.use(bodyParser.json());
 app.put('/update/:id', function (req, res) {
     const conn = mysql.createConnection();
