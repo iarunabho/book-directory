@@ -46,6 +46,7 @@ app.delete('/delete/:id', function (req, res) {
     });
     res.send("Record Deleted Successfully");
 })
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
