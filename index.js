@@ -2,7 +2,7 @@ const mysql = require('./service/db-connector');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 3000;
+const port = 3010;
 
 mysql.createTable();
 
