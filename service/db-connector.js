@@ -1,11 +1,11 @@
 var mysql = require('mysql')
 
 var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "password",
-  insecureAuth : true,
-  database: 'book'
+  host: "143.110.181.140",
+  user: "foo",
+  password: "bar",
+  database: 'book',
+  insecureAuth : true
 });
 
 const createTable = () => {
