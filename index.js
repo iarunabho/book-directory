@@ -2,7 +2,6 @@ const mysql = require('./service/db-connector');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-console.log(mysql);
 const port = 3000;
 
 mysql.createTable();
@@ -11,27 +10,41 @@ app.get('/', (req, res) => {
     const conn = mysql.createConnection();
     var sql = "SELECT * FROM bookdets";
     conn.query(sql, function (err, result) {
-      console.log(result);
-      res.send(result);  
+        if (err) throw err;
+        res.send(result);  
     });    
 })
 
 app.use(bodyParser.json());
 app.post('/', function (req, res) {
     const conn = mysql.createConnection();
-    console.log(req.body)
     var sql = "INSERT INTO bookdets (name, count) VALUES ('" + req.body.bookname + "', " + req.body.count + ")";
     conn.query(sql, function (err, result) {
-      console.log(result);
+        if (err) throw err;
+        console.log(result)
     });
-    res.send('Got a POST request');
+    res.send("Record Added Successfully");
 })
-app.put('/user/:username', function (req, res) {
-    // res.send('Got a PUT request at /user')
-    res.send('username is ' + req.params.username);
+
+app.use(bodyParser.json());
+app.put('/update/:id', function (req, res) {
+    const conn = mysql.createConnection();
+    var sql = "UPDATE bookdets SET name = '" + req.body.bookname + "', count = " + req.body.count + " WHERE id = " + req.params.id;  
+    conn.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log(result)
+    });
+    res.send("Record Updated Successfully");
 })
-app.delete('/user', function (req, res) {
-    res.send('Got a DELETE request at /user');
+
+app.delete('/delete/:id', function (req, res) {
+    const conn = mysql.createConnection();
+    var sql = "DELETE FROM bookdets WHERE id = " + req.params.id;  
+    conn.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log(result)
+    });
+    res.send("Record Deleted Successfully");
 })
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
