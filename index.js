@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
         res.send(result);  
     });    
 })
-
+//Added body parser to parse json
 app.use(bodyParser.json());
 app.post('/', function (req, res) {
     const conn = mysql.createConnection();
